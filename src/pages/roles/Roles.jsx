@@ -12,7 +12,7 @@ const Roles = () => {
     <div className="w-[70%] overflow-y-auto sm:w-[95%] sm:h-full sm:my-[20px] mx-auto flex flex-col w-[100vw] my-[40px] justify-center items-center">
       <div>FARM TO MARKET ALLIANCE</div>
       <div className="mb-[40px] w-full">
-        <p className="text-center">Farmers Service Centres (FSC)</p>
+        <p className="text-center">Farmers Service Centres (FSC) Survey</p>
         <p className="text-center font-bold">
           Roles and responsibility analysis
         </p>

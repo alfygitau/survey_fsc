@@ -19,7 +19,7 @@ const PersonalInformation = () => {
     <div className="w-[60%] sm:w-[95%] sm:h-full sm:my-[20px] mx-auto flex flex-col w-[100vw] h-[100vh] justify-center items-center">
       <div>FARM TO MARKET ALLIANCE</div>
       <div className="mb-[30px] w-full">
-        <p className="text-center">Farmers Service Centres (FSC)</p>
+        <p className="text-center">Farmers Service Centres (FSC) Survey</p>
         <p className="text-center">
           Training Needs Assessment (TNA) questionnaire
         </p>
