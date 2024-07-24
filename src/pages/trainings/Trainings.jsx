@@ -8,36 +8,48 @@ const Trainings = () => {
   const [trainingYear, setTrainingYear] = useState("");
   const [trainingInstitution, setTrainingInstitution] = useState("");
   const [trainingRelavance, setTrainingRelavance] = useState("");
+  const [satisfactionLevel, setSatisfactionLevel] = useState("");
+
+  const handleChange = (event) => {
+    setSatisfactionLevel(event.target.value);
+  };
 
   const [trainingArea2, setTrainingArea2] = useState("");
   const [trainingDuration2, setTrainingDuration2] = useState("");
   const [trainingYear2, setTrainingYear2] = useState("");
   const [trainingInstitution2, setTrainingInstitution2] = useState("");
   const [trainingRelavance2, setTrainingRelavance2] = useState("");
+  const [satisfactionLevel2, setSatisfactionLevel2] = useState("");
+
+  const handleChange2 = (event) => {
+    setSatisfactionLevel2(event.target.value);
+  };
 
   const [trainingArea3, setTrainingArea3] = useState("");
   const [trainingDuration3, setTrainingDuration3] = useState("");
   const [trainingYear3, setTrainingYear3] = useState("");
   const [trainingInstitution3, setTrainingInstitution3] = useState("");
   const [trainingRelavance3, setTrainingRelavance3] = useState("");
-  const { data, updateData } = useContext(GlobalContext);
   const navigate = useNavigate();
+  const [satisfactionLevel3, setSatisfactionLevel3] = useState("");
+  const handleChange3 = (event) => {
+    setSatisfactionLevel3(event.target.value);
+  };
 
   const createTrainings = () => {
-    const newTrainings = [];
     navigate("/roles");
   };
   return (
-    <div className="w-[80%] sm:w-[95%] sm:h-full sm:my-[20px] mx-auto flex flex-col my-[40px] justify-center items-center">
-      <div>FARM TO MARKET ALLIANCE</div>
+    <div className="w-[80%] sm:w-[95%] sm:h-full sm:my-[20px] mx-auto flex flex-col my-[40px]">
       <div className="mb-[40px] w-full">
-        <p className="text-center">Farmers Service Centres (FSC) Survey</p>
-        <p className="text-center font-bold">
+        <div>FARM TO MARKET ALLIANCE</div>
+        <p className="">Farmers Service Centres (FSC) Survey</p>
+        <p className="font-bold">
           Details of training undergone(Last three trainings attended)
         </p>
       </div>
       <div className="flex items-center sm:flex-col justify-between">
-        <div className="flex flex-col w-[30%] sm:w-[95%] mx-auto">
+        <div className="flex flex-col w-[30%] sm:w-[95%]">
           <div className="w-full mb-[20px]">
             <p className="text-[15px] font-bold">1st Training</p>
             <label className="text-[14px] text-left" htmlFor="name">
@@ -98,23 +110,46 @@ const Trainings = () => {
                 class="h-[50px] w-full text-[14px] mt-[10px] rounded-[5px] border px-[10px] border-gray-300 focus:outline-none focus:ring-0 focus:ring-offset-0 focus:border-primary-110"
               />
             </div>
-            <label className="text-[14px] text-left" htmlFor="name">
-              Level of satisfaction
-            </label>
-            <div className="flex mt-[10px] items-center justify-between">
-              <div className="flex items-center gap-[10px]">
-                <input type="radio" name="one" id="one" />
-                <span className="text-[12px] truncate">
-                  Highly satisfactory
-                </span>
-              </div>
-              <div className="flex items-center gap-[10px]">
-                <input type="radio" name="two" id="two" />
-                <span className="text-[12px] truncate">Satisfactory</span>
-              </div>
-              <div className="flex items-center gap-[10px]">
-                <input type="radio" name="three" id="three" />
-                <span className="text-[12px] truncate">Unsatisfactory</span>
+            <div>
+              <label className="text-[14px] text-left" htmlFor="satisfaction">
+                Level of satisfaction
+              </label>
+              <div className="flex mt-[10px] items-center justify-between">
+                <div className="flex items-center gap-[10px]">
+                  <input
+                    type="radio"
+                    name="satisfaction"
+                    id="highly-satisfactory"
+                    value="A"
+                    checked={satisfactionLevel === "A"}
+                    onChange={handleChange}
+                  />
+                  <span className="text-[12px] truncate">
+                    Highly satisfactory
+                  </span>
+                </div>
+                <div className="flex items-center gap-[10px]">
+                  <input
+                    type="radio"
+                    name="satisfaction"
+                    id="satisfactory"
+                    value="B"
+                    checked={satisfactionLevel === "B"}
+                    onChange={handleChange}
+                  />
+                  <span className="text-[12px] truncate">Satisfactory</span>
+                </div>
+                <div className="flex items-center gap-[10px]">
+                  <input
+                    type="radio"
+                    name="satisfaction"
+                    id="unsatisfactory"
+                    value="C"
+                    checked={satisfactionLevel === "C"}
+                    onChange={handleChange}
+                  />
+                  <span className="text-[12px] truncate">Unsatisfactory</span>
+                </div>
               </div>
             </div>
           </div>
@@ -180,23 +215,46 @@ const Trainings = () => {
                 class="h-[50px] w-full text-[14px] mt-[10px] rounded-[5px] border px-[10px] border-gray-300 focus:outline-none focus:ring-0 focus:ring-offset-0 focus:border-primary-110"
               />
             </div>
-            <label className="text-[14px] text-left" htmlFor="name">
-              Level of satisfaction
-            </label>
-            <div className="flex mt-[10px] items-center justify-between">
-              <div className="flex items-center gap-[10px]">
-                <input type="radio" name="one" id="one" />
-                <span className="text-[12px] truncate">
-                  Highly satisfactory
-                </span>
-              </div>
-              <div className="flex items-center gap-[10px]">
-                <input type="radio" name="two" id="two" />
-                <span className="text-[12px] truncate">Satisfactory</span>
-              </div>
-              <div className="flex items-center gap-[10px]">
-                <input type="radio" name="three" id="three" />
-                <span className="text-[12px] truncate">Unsatisfactory</span>
+            <div>
+              <label className="text-[14px] text-left" htmlFor="satisfaction">
+                Level of satisfaction
+              </label>
+              <div className="flex mt-[10px] items-center justify-between">
+                <div className="flex items-center gap-[10px]">
+                  <input
+                    type="radio"
+                    name="satisfaction2"
+                    id="highly-satisfactory2"
+                    value="A"
+                    checked={satisfactionLevel2 === "A"}
+                    onChange={handleChange2}
+                  />
+                  <span className="text-[12px] truncate">
+                    Highly satisfactory
+                  </span>
+                </div>
+                <div className="flex items-center gap-[10px]">
+                  <input
+                    type="radio"
+                    name="satisfaction2"
+                    id="satisfactory2"
+                    value="B"
+                    checked={satisfactionLevel2 === "B"}
+                    onChange={handleChange2}
+                  />
+                  <span className="text-[12px] truncate">Satisfactory</span>
+                </div>
+                <div className="flex items-center gap-[10px]">
+                  <input
+                    type="radio"
+                    name="satisfaction2"
+                    id="unsatisfactory2"
+                    value="C"
+                    checked={satisfactionLevel2 === "C"}
+                    onChange={handleChange2}
+                  />
+                  <span className="text-[12px] truncate">Unsatisfactory</span>
+                </div>
               </div>
             </div>
           </div>
@@ -262,23 +320,46 @@ const Trainings = () => {
                 class="h-[50px] w-full text-[14px] mt-[10px] rounded-[5px] border px-[10px] border-gray-300 focus:outline-none focus:ring-0 focus:ring-offset-0 focus:border-primary-110"
               />
             </div>
-            <label className="text-[14px] text-left" htmlFor="name">
-              Level of satisfaction
-            </label>
-            <div className="flex items-center mt-[10px] justify-between">
-              <div className="flex items-center gap-[10px]">
-                <input type="radio" name="one" id="one" />
-                <span className="text-[12px] truncate">
-                  Highly satisfactory
-                </span>
-              </div>
-              <div className="flex items-center gap-[10px]">
-                <input type="radio" name="two" id="two" />
-                <span className="text-[12px] truncate">Satisfactory</span>
-              </div>
-              <div className="flex items-center gap-[10px]">
-                <input type="radio" name="three" id="three" />
-                <span className="text-[12px] truncate">Unsatisfactory</span>
+            <div>
+              <label className="text-[14px] text-left" htmlFor="satisfaction">
+                Level of satisfaction
+              </label>
+              <div className="flex mt-[10px] items-center justify-between">
+                <div className="flex items-center gap-[10px]">
+                  <input
+                    type="radio"
+                    name="satisfaction3"
+                    id="highly-satisfactory3"
+                    value="A"
+                    checked={satisfactionLevel3 === "A"}
+                    onChange={handleChange3}
+                  />
+                  <span className="text-[12px] truncate">
+                    Highly satisfactory
+                  </span>
+                </div>
+                <div className="flex items-center gap-[10px]">
+                  <input
+                    type="radio"
+                    name="satisfaction3"
+                    id="satisfactory3"
+                    value="B"
+                    checked={satisfactionLevel3 === "B"}
+                    onChange={handleChange3}
+                  />
+                  <span className="text-[12px] truncate">Satisfactory</span>
+                </div>
+                <div className="flex items-center gap-[10px]">
+                  <input
+                    type="radio"
+                    name="satisfaction3"
+                    id="unsatisfactory3"
+                    value="C"
+                    checked={satisfactionLevel3 === "C"}
+                    onChange={handleChange3}
+                  />
+                  <span className="text-[12px] truncate">Unsatisfactory</span>
+                </div>
               </div>
             </div>
           </div>

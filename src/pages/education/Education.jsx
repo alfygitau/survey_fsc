@@ -7,7 +7,6 @@ const Education = () => {
   const [secondaryLevel, setSecondaryLevel] = useState("");
   const [tertiaryLevel, setTertiaryLevel] = useState("");
   const navigate = useNavigate();
-  const { data, updateData } = useContext(GlobalContext);
 
   const createEducationDetails = () => {
     navigate("/trainings");

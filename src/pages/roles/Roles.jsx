@@ -15,8 +15,10 @@ const Roles = () => {
   const [skills, setSkills] = useState([]);
   const [currentSkill, setCurrentSkill] = useState("");
   const [otherFscRoles, setOtherFscRoles] = useState([]);
+
   const [farmInput, setFarmInput] = useState("");
   const [farmInputs, setFarmInputs] = useState([]);
+
   const [marketChallenge, setMarketChallenge] = useState("");
   const [marketChallenges, setMarketChallenges] = useState([]);
   const [otherChallenge, setOtherChallenge] = useState("");
@@ -24,6 +26,18 @@ const Roles = () => {
   const [otherVendor, setOtherVendor] = useState("");
   const [marketingInformation, setMarketingInformation] = useState("");
   const [otherVendors, setOtherVendors] = useState([]);
+
+  const addInput = () => {
+    if (farmInput.trim()) {
+      setFarmInputs([...farmInputs, farmInput]);
+      setFarmInput("");
+    }
+  };
+
+  const removeInput = (input) => {
+    const newInputs = farmInputs.filter((c) => c !== input);
+    setFarmInputs(newInputs);
+  };
 
   const addOtherChallenge = () => {
     if (otherChallenge.trim()) {
@@ -45,27 +59,6 @@ const Roles = () => {
 
   const removeMarketChallenge = (challenge) => {
     setMarketChallenges(marketChallenges.filter((c) => c !== challenge));
-  };
-
-  const addVendor = () => {
-    if (otherVendor.trim()) {
-      setOtherVendors([...otherVendors, otherVendor]);
-      setOtherVendor("");
-    }
-  };
-
-  const removeVendor = (vendor) => {
-    setOtherVendors(otherVendors.filter((v) => v !== vendor));
-  };
-
-  const addOtherRole = () => {
-    if (otherRole.trim() === "") return;
-    setOtherFscRoles([...otherFscRoles, { title: otherRole }]);
-    setOtherRole("");
-  };
-
-  const removeOtherRole = (role) => {
-    setOtherFscRoles(otherFscRoles.filter((r) => r.title !== role));
   };
 
   const handleVendorCheckboxChange = (vendorType) => {
@@ -162,27 +155,37 @@ const Roles = () => {
               <p className="text-[15px] mb-[20px]">
                 What skills are required for your role (According to you)?
               </p>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="18"
-                height="18"
-                viewBox="0 0 24 24"
-                className="cursor-pointer"
-                onClick={addSkill}
-              >
-                <g fill="currentColor" fill-rule="evenodd" clip-rule="evenodd">
-                  <path d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12m10-8a8 8 0 1 0 0 16a8 8 0 0 0 0-16" />
-                  <path d="M13 7a1 1 0 1 0-2 0v4H7a1 1 0 1 0 0 2h4v4a1 1 0 1 0 2 0v-4h4a1 1 0 1 0 0-2h-4z" />
-                </g>
-              </svg>
             </div>
-            <textarea
+            <input
               type="text"
               placeholder="Enter the skills required for your role?"
               value={currentSkill}
               onChange={handleSkillChange}
-              class="min-h-[100px] w-full text-[14px] rounded-[5px] border px-[10px] border-gray-300 focus:outline-none focus:ring-0 focus:ring-offset-0 focus:border-primary-110"
+              class="h-[50px] w-full text-[14px] rounded-[5px] border px-[10px] border-gray-300 focus:outline-none focus:ring-0 focus:ring-offset-0 focus:border-primary-110"
             />
+            <div className="w-full flex justify-end">
+              <button
+                onClick={addSkill}
+                className="h-[30px] rounded cursor-pointer px-[20px] bg-[#FFCC00] flex items-center gap-[10px] justify-center"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                >
+                  <g
+                    fill="currentColor"
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                  >
+                    <path d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12m10-8a8 8 0 1 0 0 16a8 8 0 0 0 0-16" />
+                    <path d="M13 7a1 1 0 1 0-2 0v4H7a1 1 0 1 0 0 2h4v4a1 1 0 1 0 2 0v-4h4a1 1 0 1 0 0-2h-4z" />
+                  </g>
+                </svg>
+                <span className="text-[13px]">Add</span>
+              </button>
+            </div>
           </div>
           <ul className="list-disc my-[10px] w-full">
             {skills.map((skill, index) => (
@@ -253,7 +256,7 @@ const Roles = () => {
               placeholder="How you access marketing information?"
               value={marketingInformation}
               onChange={(e) => setMarketingInformation(e.target.value)}
-              class="min-h-[100px] w-full text-[14px] rounded-[5px] border px-[10px] border-gray-300 focus:outline-none focus:ring-0 focus:ring-offset-0 focus:border-primary-110"
+              class="h-[100px] w-full text-[14px] rounded-[5px] border px-[10px] border-gray-300 focus:outline-none focus:ring-0 focus:ring-offset-0 focus:border-primary-110"
             />
           </div>
         </div>
@@ -262,41 +265,87 @@ const Roles = () => {
             <p className="text-[15px] mb-[10px]">
               What kind of inputs do you deal with?
             </p>
-            <textarea
+            <input
               type="text"
               placeholder="How you access marketing information?"
               value={farmInput}
               onChange={(e) => setFarmInput(e.target.value)}
-              class="min-h-[100px] w-full text-[14px] rounded-[5px] border px-[10px] border-gray-300 focus:outline-none focus:ring-0 focus:ring-offset-0 focus:border-primary-110"
+              class="h-[50px] w-full text-[14px] rounded-[5px] border px-[10px] border-gray-300 focus:outline-none focus:ring-0 focus:ring-offset-0 focus:border-primary-110"
             />
+            <div className="w-full flex justify-end">
+              <button
+                onClick={addInput}
+                className="h-[30px] rounded cursor-pointer px-[20px] bg-[#FFCC00] flex items-center gap-[10px] justify-center"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                >
+                  <g
+                    fill="currentColor"
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                  >
+                    <path d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12m10-8a8 8 0 1 0 0 16a8 8 0 0 0 0-16" />
+                    <path d="M13 7a1 1 0 1 0-2 0v4H7a1 1 0 1 0 0 2h4v4a1 1 0 1 0 2 0v-4h4a1 1 0 1 0 0-2h-4z" />
+                  </g>
+                </svg>
+                <span className="text-[13px]">Add</span>
+              </button>
+            </div>
           </div>
+          <ul className="list-disc my-[10px] w-full">
+            {farmInputs.map((input, index) => (
+              <li key={index} className="flex justify-between items-center">
+                {input}
+                <button
+                  onClick={() => removeInput(input)}
+                  className="ml-[10px] text-red-500"
+                >
+                  Remove
+                </button>
+              </li>
+            ))}
+          </ul>
           <div className="flex flex-col mt-[10px] mb-[15px] gap-[10px]">
             <div className="flex items-center justify-between w-full">
               <p className="text-[15px] mb-[10px]">
                 What challenges are you facing in accessing the market for the
                 inputs?
               </p>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="18"
-                height="18"
-                viewBox="0 0 24 24"
-                className="cursor-pointer"
-                onClick={addMarketChallenge}
-              >
-                <g fill="currentColor" fill-rule="evenodd" clip-rule="evenodd">
-                  <path d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12m10-8a8 8 0 1 0 0 16a8 8 0 0 0 0-16" />
-                  <path d="M13 7a1 1 0 1 0-2 0v4H7a1 1 0 1 0 0 2h4v4a1 1 0 1 0 2 0v-4h4a1 1 0 1 0 0-2h-4z" />
-                </g>
-              </svg>
             </div>
-            <textarea
+            <input
               type="text"
               placeholder="Challenges in accessing the market for inputs?"
               value={marketChallenge}
               onChange={(e) => setMarketChallenge(e.target.value)}
-              class="min-h-[100px] w-full text-[14px] rounded-[5px] border px-[10px] border-gray-300 focus:outline-none focus:ring-0 focus:ring-offset-0 focus:border-primary-110"
+              class="h-[50px] w-full text-[14px] rounded-[5px] border px-[10px] border-gray-300 focus:outline-none focus:ring-0 focus:ring-offset-0 focus:border-primary-110"
             />
+            <div className="w-full flex justify-end">
+              <button
+                onClick={addMarketChallenge}
+                className="h-[30px] rounded cursor-pointer px-[20px] bg-[#FFCC00] flex items-center gap-[10px] justify-center"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                >
+                  <g
+                    fill="currentColor"
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                  >
+                    <path d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12m10-8a8 8 0 1 0 0 16a8 8 0 0 0 0-16" />
+                    <path d="M13 7a1 1 0 1 0-2 0v4H7a1 1 0 1 0 0 2h4v4a1 1 0 1 0 2 0v-4h4a1 1 0 1 0 0-2h-4z" />
+                  </g>
+                </svg>
+                <span className="text-[13px]">Add</span>
+              </button>
+            </div>
           </div>
           <div className="my-[10px] w-full">
             <ul className="list-disc">
@@ -319,27 +368,37 @@ const Roles = () => {
                 What other key challenges do you encounter in your FSC
                 operations (currently)?
               </p>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="18"
-                height="18"
-                viewBox="0 0 24 24"
-                className="cursor-pointer"
-                onClick={addOtherChallenge}
-              >
-                <g fill="currentColor" fill-rule="evenodd" clip-rule="evenodd">
-                  <path d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12m10-8a8 8 0 1 0 0 16a8 8 0 0 0 0-16" />
-                  <path d="M13 7a1 1 0 1 0-2 0v4H7a1 1 0 1 0 0 2h4v4a1 1 0 1 0 2 0v-4h4a1 1 0 1 0 0-2h-4z" />
-                </g>
-              </svg>
             </div>
-            <textarea
+            <input
               type="text"
               placeholder="Other challenges in your operations"
               value={otherChallenge}
               onChange={(e) => setOtherChallenge(e.target.value)}
-              class="min-h-[100px] w-full text-[14px] rounded-[5px] border px-[10px] border-gray-300 focus:outline-none focus:ring-0 focus:ring-offset-0 focus:border-primary-110"
+              class="h-[50px] w-full text-[14px] rounded-[5px] border px-[10px] border-gray-300 focus:outline-none focus:ring-0 focus:ring-offset-0 focus:border-primary-110"
             />
+            <div className="w-full flex justify-end">
+              <button
+                onClick={addOtherChallenge}
+                className="h-[30px] rounded cursor-pointer px-[20px] bg-[#FFCC00] flex items-center gap-[10px] justify-center"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                >
+                  <g
+                    fill="currentColor"
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                  >
+                    <path d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12m10-8a8 8 0 1 0 0 16a8 8 0 0 0 0-16" />
+                    <path d="M13 7a1 1 0 1 0-2 0v4H7a1 1 0 1 0 0 2h4v4a1 1 0 1 0 2 0v-4h4a1 1 0 1 0 0-2h-4z" />
+                  </g>
+                </svg>
+                <span className="text-[13px]">Add</span>
+              </button>
+            </div>
           </div>
           <div className="my-[10px] w-full">
             <ul className="list-disc">
