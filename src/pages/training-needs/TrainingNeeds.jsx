@@ -10,10 +10,10 @@ const TrainingNeeds = () => {
     <div className="w-[80%] sm:w-[95%] sm:h-full sm:mt-[20px] lg:mt-[40px] mx-auto flex flex-col h-full justify-center items-center">
       <div>FARM TO MARKET ALLIANCE</div>
       <div className="mb-[40px] w-full">
-        <p className="text-center">Farmers Service Centres (FSC) Survey</p>
-        <p className="text-center">Training Needs</p>
-        <p className="text-center font-bold">
-          Please indicate your training needs in the context of your roles and
+        <p className="">Farmers Service Centres (FSC) Survey</p>
+        <p className="">Training Needs</p>
+        <p className="font-bold">
+          3. Please indicate your training needs in the context of your roles and
           responsibility in a scale of 1 - 5 (1 least preferred, 5 most
           preferred)
         </p>

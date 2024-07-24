@@ -24,33 +24,7 @@ const Trainings = () => {
   const navigate = useNavigate();
 
   const createTrainings = () => {
-    const newTrainings = [
-      {
-        title: trainingArea,
-        duration: trainingDuration,
-        yearOfTraining: trainingYear,
-        institution: trainingInstitution,
-        valueObtained: trainingRelavance,
-      },
-      {
-        title: trainingArea2,
-        duration: trainingDuration2,
-        yearOfTraining: trainingYear2,
-        institution: trainingInstitution2,
-        valueObtained: trainingRelavance2,
-      },
-      {
-        title: trainingArea3,
-        duration: trainingDuration3,
-        yearOfTraining: trainingYear3,
-        institution: trainingInstitution3,
-        valueObtained: trainingRelavance3,
-      },
-    ];
-    updateData({
-      ...data,
-      trainingReceived: newTrainings,
-    });
+    const newTrainings = [];
     navigate("/roles");
   };
   return (

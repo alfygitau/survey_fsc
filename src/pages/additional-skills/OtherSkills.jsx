@@ -3,6 +3,9 @@ import React, { useState } from "react";
 const OtherSkills = () => {
   const [additionalTraining, setAdditionalTraining] = useState("");
   const [additionalModules, setAdditionalModules] = useState("");
+  const [residentialTiming, setResidentialTiming] = useState("");
+  const [nonResidentialTiming, setNonResidentialTiming] = useState("");
+  const [trainingDays, setTrainingDays] = useState("");
 
   const saveSurvey = () => {};
   return (

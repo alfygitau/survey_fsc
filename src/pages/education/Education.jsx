@@ -10,65 +10,55 @@ const Education = () => {
   const { data, updateData } = useContext(GlobalContext);
 
   const createEducationDetails = () => {
-    updateData({
-      ...data,
-      fsc: {
-        ...data.fsc,
-        primarySchoolAttended: primaryLevel,
-        secondarySchoolAttended: secondaryLevel,
-        collegeAttended: tertiaryLevel,
-      },
-    });
     navigate("/trainings");
   };
 
   return (
-    <div className="w-[60%] sm:w-[95%] sm:h-full sm:mt-[20px] mx-auto flex flex-col mt-[40px] justify-center items-center">
-      <div>FARM TO MARKET ALLIANCE</div>
-      <div className="mb-[30px] w-full">
-        <p className="text-center">Farmers Service Centres (FSC) Survey</p>
-        <p className="text-center font-bold">
+    <div className="w-[60%] sm:w-[95%] sm:h-full h-[650px] sm:mt-[20px] mx-auto flex flex-col justify-center items-center">
+      <div className="flex flex-col w-[50%] sm:w-[95%] mx-auto">
+        <p className="text-left font-semibold">
+          Farmers Service Centres (FSC) Survey
+        </p>
+        <p className="text-[15px] font-semibold mb-[40px]">
           Education, occupation and recent training attended (Please specify)
         </p>
-      </div>
-      <div className="flex flex-col w-[50%] sm:w-[95%] mx-auto">
         <div className="w-full mb-[20px]">
           <label className="text-[14px] text-left" htmlFor="name">
             Primary
           </label>
-          <textarea
+          <input
             type="text"
             placeholder="Enter primary education level details"
             value={primaryLevel}
             onChange={(e) => setPrimaryLevel(e.target.value)}
-            class="min-h-[100px] w-full text-[14px] rounded-[5px] border px-[10px] border-gray-300 focus:outline-none focus:ring-0 focus:ring-offset-0 focus:border-primary-110"
+            class="h-[50px] w-full text-[14px] rounded-[5px] border px-[10px] border-gray-300 focus:outline-none focus:ring-0 focus:ring-offset-0 focus:border-primary-110"
           />
         </div>
         <div className="w-full mb-[20px]">
           <label className="text-[14px] text-left" htmlFor="name">
             Secondary
           </label>
-          <textarea
+          <input
             type="text"
             placeholder="Enter secondary education level details"
             value={secondaryLevel}
             onChange={(e) => setSecondaryLevel(e.target.value)}
-            class="min-h-[100px] w-full text-[14px] rounded-[5px] border px-[10px] border-gray-300 focus:outline-none focus:ring-0 focus:ring-offset-0 focus:border-primary-110"
+            class="h-[50px] w-full text-[14px] rounded-[5px] border px-[10px] border-gray-300 focus:outline-none focus:ring-0 focus:ring-offset-0 focus:border-primary-110"
           />
         </div>
-        <div className="w-full mb-[20px]">
+        <div className="w-full mb-[40px]">
           <label className="text-[14px] text-left" htmlFor="name">
             Tertiary/college
           </label>
-          <textarea
+          <input
             type="text"
             placeholder="Enter tertiary education level details"
             value={tertiaryLevel}
             onChange={(e) => setTertiaryLevel(e.target.value)}
-            class="min-h-[100px] w-full text-[14px] rounded-[5px] border px-[10px] border-gray-300 focus:outline-none focus:ring-0 focus:ring-offset-0 focus:border-primary-110"
+            class="h-[50px] w-full text-[14px] rounded-[5px] border px-[10px] border-gray-300 focus:outline-none focus:ring-0 focus:ring-offset-0 focus:border-primary-110"
           />
         </div>
-        <div className="flex items-center mb-[20px] gap-[10px]">
+        <div className="flex items-center mb-[40px] gap-[10px]">
           <input type="checkbox" name="noneLevel" id="noneLevel" />I did not
           attend any education or occupation level training
         </div>
