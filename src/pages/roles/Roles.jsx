@@ -17,13 +17,46 @@ const Roles = () => {
   const [otherFscRoles, setOtherFscRoles] = useState([]);
   const [farmInput, setFarmInput] = useState("");
   const [farmInputs, setFarmInputs] = useState([]);
-  const [marketChallenge, setmarketChallenge] = useState("");
-  const [marketChallenges, setmarketChallenges] = useState([]);
-  const [otherChallenge, setotherChallenge] = useState("");
-  const [otherChallenges, setotherChallenges] = useState([]);
-  const [otherVendor, setotherVendor] = useState("");
+  const [marketChallenge, setMarketChallenge] = useState("");
+  const [marketChallenges, setMarketChallenges] = useState([]);
+  const [otherChallenge, setOtherChallenge] = useState("");
+  const [otherChallenges, setOtherChallenges] = useState([]);
+  const [otherVendor, setOtherVendor] = useState("");
   const [marketingInformation, setMarketingInformation] = useState("");
-  const [otherVendors, setotherVendors] = useState([]);
+  const [otherVendors, setOtherVendors] = useState([]);
+
+  const addOtherChallenge = () => {
+    if (otherChallenge.trim()) {
+      setOtherChallenges([...otherChallenges, otherChallenge]);
+      setOtherChallenge("");
+    }
+  };
+
+  const removeOtherChallenge = (challenge) => {
+    setOtherChallenges(otherChallenges.filter((c) => c !== challenge));
+  };
+
+  const addMarketChallenge = () => {
+    if (marketChallenge.trim()) {
+      setMarketChallenges([...marketChallenges, marketChallenge]);
+      setMarketChallenge("");
+    }
+  };
+
+  const removeMarketChallenge = (challenge) => {
+    setMarketChallenges(marketChallenges.filter((c) => c !== challenge));
+  };
+
+  const addVendor = () => {
+    if (otherVendor.trim()) {
+      setOtherVendors([...otherVendors, otherVendor]);
+      setOtherVendor("");
+    }
+  };
+
+  const removeVendor = (vendor) => {
+    setOtherVendors(otherVendors.filter((v) => v !== vendor));
+  };
 
   const addOtherRole = () => {
     if (otherRole.trim() === "") return;
@@ -150,7 +183,7 @@ const Roles = () => {
               class="min-h-[100px] w-full text-[14px] rounded-[5px] border px-[10px] border-gray-300 focus:outline-none focus:ring-0 focus:ring-offset-0 focus:border-primary-110"
             />
           </div>
-          <ul className="list-disc my-[20px] w-full">
+          <ul className="list-disc my-[10px] w-full">
             {otherFscRoles.map((role, index) => (
               <li key={index} className="flex justify-between items-center">
                 {role.title}
@@ -190,7 +223,7 @@ const Roles = () => {
               class="min-h-[100px] w-full text-[14px] rounded-[5px] border px-[10px] border-gray-300 focus:outline-none focus:ring-0 focus:ring-offset-0 focus:border-primary-110"
             />
           </div>
-          <ul className="list-disc my-[20px] w-full">
+          <ul className="list-disc my-[10px] w-full">
             {skills.map((skill, index) => (
               <li key={index} className="flex justify-between items-center">
                 {skill}
@@ -249,15 +282,43 @@ const Roles = () => {
             </div>
           </div>
           <div className="flex flex-col mt-[10px] mb-[15px] gap-[10px]">
-            <p className="text-[12px]">Other vendors (specify)</p>
+            <div className="flex items-center w-full justify-between">
+              <p className="text-[12px]">Other vendors (specify)</p>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                className="cursor-pointer"
+                onClick={addVendor}
+              >
+                <g fill="currentColor" fill-rule="evenodd" clip-rule="evenodd">
+                  <path d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12m10-8a8 8 0 1 0 0 16a8 8 0 0 0 0-16" />
+                  <path d="M13 7a1 1 0 1 0-2 0v4H7a1 1 0 1 0 0 2h4v4a1 1 0 1 0 2 0v-4h4a1 1 0 1 0 0-2h-4z" />
+                </g>
+              </svg>
+            </div>
             <textarea
               type="text"
               placeholder="Describe your specific role"
               value={otherVendor}
-              onChange={(e) => setotherVendor(e.target.value)}
+              onChange={(e) => setOtherVendor(e.target.value)}
               class="min-h-[100px] w-full text-[14px] rounded-[5px] border px-[10px] border-gray-300 focus:outline-none focus:ring-0 focus:ring-offset-0 focus:border-primary-110"
             />
           </div>
+          <ul className="list-disc my-[10px] w-full">
+            {otherVendors.map((vendor, index) => (
+              <li key={index} className="flex justify-between items-center">
+                {vendor}
+                <button
+                  onClick={() => removeVendor(vendor)}
+                  className="text-red-500"
+                >
+                  Remove
+                </button>
+              </li>
+            ))}
+          </ul>
           <div className="flex flex-col mt-[10px] mb-[15px] gap-[10px]">
             <p className="text-[15px] mb-[10px]">
               How do you access marketing information on pricing to ensure you
@@ -286,30 +347,90 @@ const Roles = () => {
             />
           </div>
           <div className="flex flex-col mt-[10px] mb-[15px] gap-[10px]">
-            <p className="text-[15px] mb-[10px]">
-              What challenges are you facing in accessing the market for the
-              inputs?
-            </p>
+            <div className="flex items-center justify-between w-full">
+              <p className="text-[15px] mb-[10px]">
+                What challenges are you facing in accessing the market for the
+                inputs?
+              </p>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                className="cursor-pointer"
+                onClick={addMarketChallenge}
+              >
+                <g fill="currentColor" fill-rule="evenodd" clip-rule="evenodd">
+                  <path d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12m10-8a8 8 0 1 0 0 16a8 8 0 0 0 0-16" />
+                  <path d="M13 7a1 1 0 1 0-2 0v4H7a1 1 0 1 0 0 2h4v4a1 1 0 1 0 2 0v-4h4a1 1 0 1 0 0-2h-4z" />
+                </g>
+              </svg>
+            </div>
             <textarea
               type="text"
               placeholder="Challenges in accessing the market for inputs?"
               value={marketChallenge}
-              onChange={(e) => setmarketChallenge(e.target.value)}
+              onChange={(e) => setMarketChallenge(e.target.value)}
               class="min-h-[100px] w-full text-[14px] rounded-[5px] border px-[10px] border-gray-300 focus:outline-none focus:ring-0 focus:ring-offset-0 focus:border-primary-110"
             />
           </div>
+          <div className="my-[10px] w-full">
+            <ul className="list-disc">
+              {marketChallenges.map((challenge, index) => (
+                <li key={index} className="flex justify-between items-center">
+                  {challenge}
+                  <button
+                    onClick={() => removeMarketChallenge(challenge)}
+                    className="ml-[10px] text-red-500"
+                  >
+                    Remove
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
           <div className="flex flex-col mt-[10px] mb-[15px] gap-[10px]">
-            <p className="text-[15px] mb-[10px]">
-              What other key challenges do you encounter in your FSC operations
-              (currently)
-            </p>
+            <div className="flex items-center justify-between w-full">
+              <p className="text-[15px] mb-[10px]">
+                What other key challenges do you encounter in your FSC
+                operations (currently)?
+              </p>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                className="cursor-pointer"
+                onClick={addOtherChallenge}
+              >
+                <g fill="currentColor" fill-rule="evenodd" clip-rule="evenodd">
+                  <path d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12m10-8a8 8 0 1 0 0 16a8 8 0 0 0 0-16" />
+                  <path d="M13 7a1 1 0 1 0-2 0v4H7a1 1 0 1 0 0 2h4v4a1 1 0 1 0 2 0v-4h4a1 1 0 1 0 0-2h-4z" />
+                </g>
+              </svg>
+            </div>
             <textarea
               type="text"
               placeholder="Other challenges in your operations"
               value={otherChallenge}
-              onChange={(e) => setotherChallenge(e.target.value)}
+              onChange={(e) => setOtherChallenge(e.target.value)}
               class="min-h-[100px] w-full text-[14px] rounded-[5px] border px-[10px] border-gray-300 focus:outline-none focus:ring-0 focus:ring-offset-0 focus:border-primary-110"
             />
+          </div>
+          <div className="my-[10px] w-full">
+            <ul className="list-disc">
+              {otherChallenges.map((challenge, index) => (
+                <li key={index} className="flex justify-between items-center">
+                  {challenge}
+                  <button
+                    onClick={() => removeOtherChallenge(challenge)}
+                    className="ml-[10px] text-red-500"
+                  >
+                    Remove
+                  </button>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </div>
