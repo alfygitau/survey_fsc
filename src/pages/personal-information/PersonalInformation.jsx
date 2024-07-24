@@ -16,7 +16,7 @@ const PersonalInformation = () => {
     navigate("/education");
   };
   return (
-    <div className="w-[60%] sm:w-[95%] sm:h-full sm:my-[20px] mx-auto flex flex-col w-[100vw] justify-center items-center">
+    <div className="w-[60%] sm:w-[95%] sm:h-full sm:mt-[20px] mx-auto flex flex-col justify-center items-center">
       <div>FARM TO MARKET ALLIANCE</div>
       <div className="mb-[30px] w-full">
         <p className="text-center">Farmers Service Centres (FSC) Survey</p>

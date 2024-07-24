@@ -10,7 +10,7 @@ const HomeLayout = () => {
       <div className="fixed w-full top-0">
         <Topbar />
       </div>
-      <div className="mt-[120px] mb-[200px]">
+      <div className="mt-[120px] mb-[80px]">
         <Outlet />
       </div>
       <div className="w-full">

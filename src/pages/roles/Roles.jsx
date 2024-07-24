@@ -9,7 +9,7 @@ const Roles = () => {
     navigate("/training-needs");
   };
   return (
-    <div className="w-[70%] overflow-y-auto sm:w-[95%] sm:h-full sm:my-[20px] mx-auto flex flex-col w-[100vw] my-[40px] justify-center items-center">
+    <div className="w-[70%] sm:w-[95%] sm:h-full sm:mt-[20px] mx-auto flex flex-col mt-[40px] justify-center items-center">
       <div>FARM TO MARKET ALLIANCE</div>
       <div className="mb-[40px] w-full">
         <p className="text-center">Farmers Service Centres (FSC) Survey</p>
