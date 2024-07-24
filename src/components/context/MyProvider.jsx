@@ -4,32 +4,44 @@ const GlobalContext = createContext();
 
 const GlobalProvider = ({ children }) => {
   const [data, setData] = useState({
-    fsc: {
-      firstName: "",
-      lastName: "",
-      gender: "",
-      ageGroup: "",
-      email: "",
-      msisdn: "",
-      isPwd: false,
-      valueChain: "",
-      fscTire: "",
-      yearOfJoining: "",
+    education: {
       secondarySchoolAttended: "",
       collegeAttended: "",
       primarySchoolAttended: "",
     },
-    fscRoles: [{ title: "" }, { title: "" }],
+    fscRoles: [
+      {
+        title: "",
+      },
+      {
+        title: "",
+      },
+    ],
     marketInformation: {
       informationReceptionMethod: "",
       inputsDealsWith: "",
       inputsAccessChallenges: "",
       otherChallenges: "",
     },
-    skillsRequired: [{ skills: "" }, { skills: "" }],
+    skillsRequired: [
+      {
+        skill: "",
+      },
+      {
+        skill: "",
+      },
+    ],
     trainingNeeds: [
-      { training: "", scale: 5 },
-      { training: "", scale: 4 },
+      {
+        training: "",
+        scale: 1,
+      },
+    ],
+    otherTrainingNeeds: [
+      {
+        training: "",
+        scale: 1,
+      },
     ],
     trainingReceived: [
       {
@@ -38,7 +50,7 @@ const GlobalProvider = ({ children }) => {
         yearOfTraining: "",
         institution: "",
         valueObtained: "",
-        satisfactoryLevel: 4,
+        satisfactoryLevel: "B",
       },
       {
         title: "",
@@ -46,14 +58,14 @@ const GlobalProvider = ({ children }) => {
         yearOfTraining: "",
         institution: "",
         valueObtained: "",
-        satisfactoryLevel: 5,
+        satisfactoryLevel: "C",
       },
     ],
     vendorsExperience: {
-      inputSupply: true,
+      inputSupply: false,
       inputDistribution: false,
       financialServiceInstitutions: false,
-      marketersExperience: true,
+      marketersExperience: false,
     },
     timePreference: {
       residentialTimePreference: "",

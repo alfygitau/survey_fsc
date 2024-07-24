@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router";
+import { GlobalContext } from "../../components/context/MyProvider";
 
 const Roles = () => {
-  const [otherRoles, setOtherRoles] = useState("");
   const [roles, setRoles] = useState([]);
   const navigate = useNavigate();
   const [vendorsExperience, setVendorsExperience] = useState({
@@ -11,21 +11,15 @@ const Roles = () => {
     financialServiceInstitutions: false,
     marketersExperience: false,
   });
-  const [otherRole, setOtherRole] = useState("");
   const [skills, setSkills] = useState([]);
   const [currentSkill, setCurrentSkill] = useState("");
-  const [otherFscRoles, setOtherFscRoles] = useState([]);
-
   const [farmInput, setFarmInput] = useState("");
   const [farmInputs, setFarmInputs] = useState([]);
-
   const [marketChallenge, setMarketChallenge] = useState("");
   const [marketChallenges, setMarketChallenges] = useState([]);
   const [otherChallenge, setOtherChallenge] = useState("");
   const [otherChallenges, setOtherChallenges] = useState([]);
-  const [otherVendor, setOtherVendor] = useState("");
   const [marketingInformation, setMarketingInformation] = useState("");
-  const [otherVendors, setOtherVendors] = useState([]);
 
   const addInput = () => {
     if (farmInput.trim()) {
@@ -96,7 +90,30 @@ const Roles = () => {
     });
   };
 
+  const { data, updateData } = useContext(GlobalContext);
+
   const createRoles = () => {
+    const formattedRoles = roles.map((role) => ({
+      title: role.title || "",
+    }));
+    const formattedSkills = skills.map((skill) => ({ skill }));
+    updateData({
+      fscRoles: formattedRoles,
+      skillsRequired: formattedSkills,
+      marketInformation: {
+        informationReceptionMethod: marketingInformation,
+        inputsDealsWith: farmInputs?.join(","),
+        inputsAccessChallenges: marketChallenges.join(","),
+        otherChallenges: otherChallenges.join(","),
+      },
+      vendorsExperience: {
+        inputSupply: vendorsExperience.inputSupply,
+        inputDistribution: vendorsExperience.inputDistribution,
+        financialServiceInstitutions:
+          vendorsExperience.financialServiceInstitutions,
+        marketersExperience: vendorsExperience.marketersExperience,
+      },
+    });
     navigate("/training-needs");
   };
   return (

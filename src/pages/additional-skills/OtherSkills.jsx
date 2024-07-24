@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { GlobalContext } from "../../components/context/MyProvider";
+import { useNavigate } from "react-router-dom";
 
 const OtherSkills = () => {
   const [additionalModule, setAdditionalModule] = useState("");
@@ -33,14 +35,23 @@ const OtherSkills = () => {
     setAdditionalModules(additionalModules.filter((item) => item !== module));
   };
 
+  const { data, updateData } = useContext(GlobalContext);
+  const navigate = useNavigate();
   const saveSurvey = () => {
-    console.log(
-      additionalModules,
-      additionalTopics,
-      trainingDays,
-      residentialTiming,
-      nonResidentialTiming
-    );
+    const transformedTrainingNeeds = additionalModules.map((module) => ({
+      training: module,
+      scale: 1,
+    }));
+
+    const transformedTrainingSubTopics = additionalTopics.map((topic) => ({
+      training: topic,
+      scale: 1,
+    }));
+    updateData({
+      otherTrainingNeeds: transformedTrainingNeeds,
+      otherTrainingSubTopics: transformedTrainingSubTopics,
+    });
+    navigate("/review");
   };
   return (
     <div className="w-[80%] sm:w-[95%] sm:h-full sm:mt-[20px] lg:mt-[50px] mx-auto flex flex-col h-full items-center">

@@ -7,8 +7,16 @@ const Education = () => {
   const [secondaryLevel, setSecondaryLevel] = useState("");
   const [tertiaryLevel, setTertiaryLevel] = useState("");
   const navigate = useNavigate();
+  const { data, updateData } = useContext(GlobalContext);
 
   const createEducationDetails = () => {
+    updateData({
+      education: {
+        secondarySchoolAttended: secondaryLevel,
+        collegeAttended: tertiaryLevel,
+        primarySchoolAttended: primaryLevel,
+      },
+    });
     navigate("/trainings");
   };
 

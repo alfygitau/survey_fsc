@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
+import { GlobalContext } from "../../components/context/MyProvider";
 
 const TrainingNeeds = () => {
   const [selectedOptions, setSelectedOptions] = useState({
@@ -49,10 +50,24 @@ const TrainingNeeds = () => {
     }));
   };
 
-  console.log(selectedOptions);
-
+  const { data, updateData } = useContext(GlobalContext);
+  const [trainingNeeds, setTrainingNeeds] = useState([]);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const formattedTrainingNeeds = Object.entries(selectedOptions).map(
+      ([training, scale]) => ({
+        training,
+        scale: parseInt(scale) || 1,
+      })
+    );
+    setTrainingNeeds(formattedTrainingNeeds);
+  }, [selectedOptions]);
+
   const createTrainingNeeds = () => {
+    updateData({
+      trainingNeeds: trainingNeeds,
+    });
     navigate("/additional-skills");
   };
   return (

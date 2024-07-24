@@ -36,7 +36,37 @@ const Trainings = () => {
     setSatisfactionLevel3(event.target.value);
   };
 
+  const { data, updateData } = useContext(GlobalContext);
+
   const createTrainings = () => {
+    updateData({
+      trainingReceived: [
+        {
+          title: trainingArea,
+          duration: trainingDuration,
+          yearOfTraining: trainingYear,
+          institution: trainingInstitution,
+          valueObtained: trainingRelavance,
+          satisfactoryLevel: satisfactionLevel,
+        },
+        {
+          title: trainingArea2,
+          duration: trainingDuration2,
+          yearOfTraining: trainingYear2,
+          institution: trainingInstitution2,
+          valueObtained: trainingRelavance2,
+          satisfactoryLevel: satisfactionLevel2,
+        },
+        {
+          title: trainingArea3,
+          duration: trainingDuration3,
+          yearOfTraining: trainingYear3,
+          institution: trainingInstitution3,
+          valueObtained: trainingRelavance3,
+          satisfactoryLevel: satisfactionLevel3,
+        },
+      ],
+    });
     navigate("/roles");
   };
   return (
