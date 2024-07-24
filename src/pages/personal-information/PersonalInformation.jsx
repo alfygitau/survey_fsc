@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router";
+import { GlobalContext } from "../../components/context/MyProvider";
 
 const PersonalInformation = () => {
   const [name, setName] = useState("");
@@ -12,7 +13,22 @@ const PersonalInformation = () => {
   const [valueChain, setValueChain] = useState("");
   const navigate = useNavigate();
 
+  const { data, updateData } = useContext(GlobalContext);
+
   const createPersonalInformation = async () => {
+    updateData({
+      fsc: {
+        ...data.fsc,
+        firstName: name,
+        county: county,
+        subcounty: subcounty,
+        ward: ward,
+        village: village,
+        mobile: mobile,
+        email: email,
+        valueChain: valueChain,
+      },
+    });
     navigate("/education");
   };
   return (

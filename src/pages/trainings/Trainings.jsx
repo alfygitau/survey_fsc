@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router";
+import { GlobalContext } from "../../components/context/MyProvider";
 
 const Trainings = () => {
   const [trainingArea, setTrainingArea] = useState("");
@@ -19,10 +20,37 @@ const Trainings = () => {
   const [trainingYear3, setTrainingYear3] = useState("");
   const [trainingInstitution3, setTrainingInstitution3] = useState("");
   const [trainingRelavance3, setTrainingRelavance3] = useState("");
-
+  const { data, updateData } = useContext(GlobalContext);
   const navigate = useNavigate();
 
   const createTrainings = () => {
+    const newTrainings = [
+      {
+        title: trainingArea,
+        duration: trainingDuration,
+        yearOfTraining: trainingYear,
+        institution: trainingInstitution,
+        valueObtained: trainingRelavance,
+      },
+      {
+        title: trainingArea2,
+        duration: trainingDuration2,
+        yearOfTraining: trainingYear2,
+        institution: trainingInstitution2,
+        valueObtained: trainingRelavance2,
+      },
+      {
+        title: trainingArea3,
+        duration: trainingDuration3,
+        yearOfTraining: trainingYear3,
+        institution: trainingInstitution3,
+        valueObtained: trainingRelavance3,
+      },
+    ];
+    updateData({
+      ...data,
+      trainingReceived: newTrainings,
+    });
     navigate("/roles");
   };
   return (

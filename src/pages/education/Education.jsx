@@ -1,13 +1,24 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router";
+import { GlobalContext } from "../../components/context/MyProvider";
 
 const Education = () => {
   const [primaryLevel, setPrimaryLevel] = useState("");
   const [secondaryLevel, setSecondaryLevel] = useState("");
   const [tertiaryLevel, setTertiaryLevel] = useState("");
   const navigate = useNavigate();
+  const { data, updateData } = useContext(GlobalContext);
 
   const createEducationDetails = () => {
+    updateData({
+      ...data,
+      fsc: {
+        ...data.fsc,
+        primarySchoolAttended: primaryLevel,
+        secondarySchoolAttended: secondaryLevel,
+        collegeAttended: tertiaryLevel,
+      },
+    });
     navigate("/trainings");
   };
 
