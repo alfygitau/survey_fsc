@@ -11,6 +11,7 @@ import TrainingNeeds from "./pages/training-needs/TrainingNeeds";
 import Roles from "./pages/roles/Roles";
 import OtherSkills from "./pages/additional-skills/OtherSkills";
 import HomeLayout from "./layout/home-layout/HomeLayout";
+import Review from "./pages/review/Review";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path="/trainings" element={<Trainings />} />
           <Route path="/training-needs" element={<TrainingNeeds />} />
           <Route path="/roles" element={<Roles />} />
+          <Route path="/review" element={<Review />} />
           <Route path="/additional-skills" element={<OtherSkills />} />
         </Route>
       </Routes>

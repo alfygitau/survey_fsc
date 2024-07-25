@@ -50,6 +50,10 @@ const OtherSkills = () => {
     updateData({
       otherTrainingNeeds: transformedTrainingNeeds,
       otherTrainingSubTopics: transformedTrainingSubTopics,
+      timePreference: {
+        residentialTimePreference: residentialTiming,
+        noneResidentialTimePreference: nonResidentialTiming,
+      },
     });
     navigate("/review");
   };
