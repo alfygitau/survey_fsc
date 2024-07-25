@@ -40,6 +40,7 @@ const Trainings = () => {
 
   const createTrainings = () => {
     updateData({
+      ...data,
       trainingReceived: [
         {
           title: trainingArea,

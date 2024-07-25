@@ -1,8 +1,26 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 const Landing = () => {
   const navigate = useNavigate();
+  const [enumerators, setEnumerators] = useState([]);
+
+  const getEnumerators = async () => {
+    try {
+      const response = await axios.get(
+        "https://ftma.egroup.co.ke/training/api/survey/enumerators"
+      );
+      console.log(response.data);
+      setEnumerators(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getEnumerators();
+  }, []);
   return (
     <div className="flex flex-col w-full gap-[20px] justify-center h-[650px]">
       <div className="w-[60%] mx-auto">
@@ -24,7 +42,7 @@ const Landing = () => {
               </select>
             </div>
             <div>
-              <p>Select your Farm service centre</p>
+              <p>Select a respondent (fcs)</p>
               <select
                 class="min-h-[50px] px-[10px] w-full text-[14px] rounded-[5px] border px-[10px] border-gray-300 focus:outline-none focus:ring-0 focus:ring-offset-0 focus:border-primary-110"
                 name="occupations"

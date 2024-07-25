@@ -1,10 +1,26 @@
 import React, { useContext } from "react";
 import { GlobalContext } from "../../components/context/MyProvider";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 const Review = () => {
-  const { data } = useContext(GlobalContext);
+  const { data, updateData } = useContext(GlobalContext);
 
-  console.log(data);
+  const saveSurvey = async () => {
+    try {
+      const response = await axios.post(data, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      if (response.status === 200 || response.status === 201) {
+        toast.success("Survey submitted");
+        updateData({});
+      }
+    } catch (error) {
+      toast.error("Survey submission failed");
+    }
+  };
   return (
     <div className="w-[70%] sm:w-[95%] sm:h-full sm:mt-[20px] mx-auto flex flex-col min-h-[650px] items-center">
       <div className="mb-[40px] mt-[20px] w-full">
@@ -41,11 +57,11 @@ const Review = () => {
             <p className="text-[16px] font-semibold mb-[10px]">2.0 Fsc Roles</p>
             {data.fscRoles.length > 0 ? (
               data.fscRoles.map((role) => (
-                <>
+                <div key={role?.title}>
                   <div className="flex items-center gap-[20px]">
                     <p className="text-[15px] text-[#000]">{role?.title}</p>
                   </div>
-                </>
+                </div>
               ))
             ) : (
               <p>No role recorded</p>
@@ -57,11 +73,11 @@ const Review = () => {
             </p>
             {data.skillsRequired.length > 0 ? (
               data.skillsRequired.map((skill) => (
-                <>
+                <div key={skill?.skill}>
                   <div className="flex items-center gap-[20px]">
                     <p className="text-[15px] text-[#000]">{skill?.skill}</p>
                   </div>
-                </>
+                </div>
               ))
             ) : (
               <p>No skills recorded</p>
@@ -108,7 +124,7 @@ const Review = () => {
             </p>
             {data.otherTrainingNeeds.length > 0 ? (
               data.otherTrainingNeeds.map((training, index) => (
-                <div className="my-[10px] w-full">
+                <div key={training?.title} className="my-[10px] w-full">
                   <div className="flex items-center gap-[10px]">
                     <p className="text-[15px] text-[#000] font-bold">Title:</p>
                     <p className="text-[15px] text-[#000]">{training?.title}</p>
@@ -155,7 +171,7 @@ const Review = () => {
             </p>
             {data.otherTrainingSubTopics.length > 0 ? (
               data.otherTrainingSubTopics.map((training, index) => (
-                <div className="my-[10px] w-full">
+                <div key={training?.title} className="my-[10px] w-full">
                   <div className="flex items-center gap-[10px]">
                     <p className="text-[15px] text-[#000] font-bold">Title:</p>
                     <p className="text-[15px] text-[#000]">{training?.title}</p>
@@ -199,7 +215,9 @@ const Review = () => {
         </div>
       </div>
       <div className="mb-[20px] sm:w-[95%] mx-auto w-full">
-        <p className="text-[16px] font-semibold mb-[10px]">4.0 Training recieved so far</p>
+        <p className="text-[16px] font-semibold mb-[10px]">
+          4.0 Training recieved so far
+        </p>
         <div className="w-full">
           {data.trainingReceived.length > 0 ? (
             <table className="w-full border-collapse table-fixed text-[12px] border border-gray-300">
@@ -246,6 +264,45 @@ const Review = () => {
             <p>No skills recorded</p>
           )}
         </div>
+      </div>
+      <div className="mb-[20px] sm:w-[95%] mx-auto w-full">
+        <p className="text-[16px] font-semibold mb-[10px]">
+          4.0 Training needs
+        </p>
+        <div className="w-full">
+          {data.trainingNeeds.length > 0 ? (
+            <table className="w-full text-[14px] sm:text-[13px] border-collapse border border-gray-300">
+              <thead>
+                <tr>
+                  <th className="border border-gray-300 p-[10px]">Training</th>
+                  <th className="border border-gray-300 p-[10px]">Scale</th>
+                </tr>
+              </thead>
+              <tbody>
+                {data.trainingNeeds.map((item, index) => (
+                  <tr key={index} className="border border-gray-300">
+                    <td className="border border-gray-300 p-[10px]">
+                      {item.training}
+                    </td>
+                    <td className="border border-gray-300 p-[10px]">
+                      {item.scale}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          ) : (
+            <p>No training needs selected</p>
+          )}
+        </div>
+      </div>
+      <div className="w-full flex justify-end">
+        <button
+          onClick={saveSurvey}
+          className="px-[20px] bg-[#FFE900] h-[50px] text-[#000]"
+        >
+          Continue
+        </button>
       </div>
     </div>
   );
