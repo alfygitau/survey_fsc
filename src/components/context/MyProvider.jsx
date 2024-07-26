@@ -7,6 +7,7 @@ const GlobalProvider = ({ children }) => {
     return savedData
       ? JSON.parse(savedData)
       : {
+          respondentId: null,
           education: {
             secondarySchoolAttended: "",
             collegeAttended: "",

@@ -2,20 +2,72 @@ import React, { useContext } from "react";
 import { GlobalContext } from "../../components/context/MyProvider";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const Review = () => {
   const { data, updateData } = useContext(GlobalContext);
+  const navigate = useNavigate();
 
   const saveSurvey = async () => {
     try {
-      const response = await axios.post(data, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await axios.post(
+        "https://ftma.egroup.co.ke/training/api/v1/survey/collect",
+        data,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       if (response.status === 200 || response.status === 201) {
         toast.success("Survey submitted");
-        updateData({});
+        updateData({
+          respondentId: null,
+          education: {
+            secondarySchoolAttended: "",
+            collegeAttended: "",
+            primarySchoolAttended: "",
+          },
+          fscRoles: [{ title: "" }, { title: "" }],
+          marketInformation: {
+            informationReceptionMethod: "",
+            inputsDealsWith: "",
+            inputsAccessChallenges: "",
+            otherChallenges: "",
+          },
+          skillsRequired: [{ skill: "" }, { skill: "" }],
+          trainingNeeds: [{ training: "", scale: 1 }],
+          otherTrainingNeeds: [{ training: "", scale: 1 }],
+          trainingReceived: [
+            {
+              title: "",
+              duration: "",
+              yearOfTraining: "",
+              institution: "",
+              valueObtained: "",
+              satisfactoryLevel: "B",
+            },
+            {
+              title: "",
+              duration: "",
+              yearOfTraining: "",
+              institution: "",
+              valueObtained: "",
+              satisfactoryLevel: "C",
+            },
+          ],
+          vendorsExperience: {
+            inputSupply: false,
+            inputDistribution: false,
+            financialServiceInstitutions: false,
+            marketersExperience: false,
+          },
+          timePreference: {
+            residentialTimePreference: "",
+            noneResidentialTimePreference: "",
+          },
+        });
+        navigate("/");
       }
     } catch (error) {
       toast.error("Survey submission failed");
@@ -68,7 +120,7 @@ const Review = () => {
             )}
           </div>
           <div className="mb-[20px]">
-            <p className="text-[16px] mb-[10px]">
+            <p className="text-[16px] font-semibold mb-[10px]">
               3.0 Required skills for your role
             </p>
             {data.skillsRequired.length > 0 ? (
