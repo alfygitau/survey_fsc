@@ -8,6 +8,8 @@ const Review = () => {
   const { data, updateData } = useContext(GlobalContext);
   const navigate = useNavigate();
 
+  console.log(data)
+
   const saveSurvey = async () => {
     try {
       const response = await axios.post(
