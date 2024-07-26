@@ -98,6 +98,7 @@ const Roles = () => {
     }));
     const formattedSkills = skills.map((skill) => ({ skill }));
     updateData({
+      ...data,
       fscRoles: formattedRoles,
       skillsRequired: formattedSkills,
       marketInformation: {

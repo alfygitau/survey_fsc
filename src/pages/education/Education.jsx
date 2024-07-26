@@ -3,19 +3,14 @@ import { useNavigate } from "react-router";
 import { GlobalContext } from "../../components/context/MyProvider";
 
 const Education = () => {
-  const [primaryLevel, setPrimaryLevel] = useState("");
-  const [secondaryLevel, setSecondaryLevel] = useState("");
-  const [tertiaryLevel, setTertiaryLevel] = useState("");
+  const [educationLevel, setEducationLevel] = useState("");
   const navigate = useNavigate();
   const { data, updateData } = useContext(GlobalContext);
 
   const createEducationDetails = () => {
     updateData({
-      education: {
-        secondarySchoolAttended: secondaryLevel,
-        collegeAttended: tertiaryLevel,
-        primarySchoolAttended: primaryLevel,
-      },
+      ...data,
+      education: educationLevel,
     });
     navigate("/trainings");
   };
@@ -31,47 +26,26 @@ const Education = () => {
         </p>
         <div className="w-full mb-[20px]">
           <label className="text-[14px] text-left" htmlFor="name">
-            Primary
+            Choose your educational level
           </label>
-          <input
+          <select
             type="text"
             placeholder="Enter primary education level details"
-            value={primaryLevel}
-            onChange={(e) => setPrimaryLevel(e.target.value)}
+            value={educationLevel}
+            onChange={(e) => setEducationLevel(e.target.value)}
             class="h-[50px] w-full text-[14px] rounded-[5px] border px-[10px] border-gray-300 focus:outline-none focus:ring-0 focus:ring-offset-0 focus:border-primary-110"
-          />
-        </div>
-        <div className="w-full mb-[20px]">
-          <label className="text-[14px] text-left" htmlFor="name">
-            Secondary
-          </label>
-          <input
-            type="text"
-            placeholder="Enter secondary education level details"
-            value={secondaryLevel}
-            onChange={(e) => setSecondaryLevel(e.target.value)}
-            class="h-[50px] w-full text-[14px] rounded-[5px] border px-[10px] border-gray-300 focus:outline-none focus:ring-0 focus:ring-offset-0 focus:border-primary-110"
-          />
-        </div>
-        <div className="w-full mb-[40px]">
-          <label className="text-[14px] text-left" htmlFor="name">
-            Tertiary/college
-          </label>
-          <input
-            type="text"
-            placeholder="Enter tertiary education level details"
-            value={tertiaryLevel}
-            onChange={(e) => setTertiaryLevel(e.target.value)}
-            class="h-[50px] w-full text-[14px] rounded-[5px] border px-[10px] border-gray-300 focus:outline-none focus:ring-0 focus:ring-offset-0 focus:border-primary-110"
-          />
-        </div>
-        <div className="flex items-center mb-[40px] gap-[10px]">
-          <input type="checkbox" name="noneLevel" id="noneLevel" />I did not
-          attend any education or occupation level training
+          >
+            <option value="primary">Primary</option>
+            <option value="secondary">Secondary</option>
+            <option value="college">College</option>
+            <option value="none">
+              I did not attend any education or occupational training
+            </option>
+          </select>
         </div>
         <button
           onClick={createEducationDetails}
-          className="w-full bg-[#FFE900] h-[50px] text-[#000]"
+          className="w-full bg-[#FFE900] h-[50px] mt-[50px] text-[#000]"
         >
           Continue
         </button>

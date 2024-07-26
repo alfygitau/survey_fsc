@@ -7,12 +7,8 @@ const GlobalProvider = ({ children }) => {
     return savedData
       ? JSON.parse(savedData)
       : {
-          respondentId: null,
-          education: {
-            secondarySchoolAttended: "",
-            collegeAttended: "",
-            primarySchoolAttended: "",
-          },
+          respondentId: "",
+          education: "",
           fscRoles: [{ title: "" }, { title: "" }],
           marketInformation: {
             informationReceptionMethod: "",
@@ -61,10 +57,8 @@ const GlobalProvider = ({ children }) => {
       const updatedData = {
         ...prevData,
         ...newData,
-        education: {
-          ...prevData.education,
-          ...newData.education,
-        },
+        education: newData.education || newData.education,
+        respondentId: newData.respondentId || prevData?.respondentId,
         fscRoles: newData.fscRoles || prevData.fscRoles,
         marketInformation: {
           ...prevData.marketInformation,

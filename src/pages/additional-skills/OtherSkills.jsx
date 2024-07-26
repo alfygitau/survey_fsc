@@ -48,6 +48,7 @@ const OtherSkills = () => {
       scale: 1,
     }));
     updateData({
+      ...data,
       otherTrainingNeeds: transformedTrainingNeeds,
       otherTrainingSubTopics: transformedTrainingSubTopics,
       timePreference: {

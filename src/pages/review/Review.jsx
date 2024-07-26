@@ -8,7 +8,7 @@ const Review = () => {
   const { data, updateData } = useContext(GlobalContext);
   const navigate = useNavigate();
 
-  console.log(data)
+  console.log(data);
 
   const saveSurvey = async () => {
     try {
@@ -88,24 +88,7 @@ const Review = () => {
             <p className="text-[16px] font-semibold mb-[10px]">
               1.0 Education/occupational level information
             </p>
-            <div className="flex items-center gap-[10px]">
-              <p className="text-[15px] text-[#000]">Primary level:</p>
-              <p className="text-[15px] text-[#000]">
-                {data.education.primarySchoolAttended}
-              </p>
-            </div>
-            <div className="flex items-center gap-[10px]">
-              <p className="text-[15px] text-[#000]">Secondary level:</p>
-              <p className="text-[15px] text-[#000]">
-                {data.education.secondarySchoolAttended}
-              </p>
-            </div>
-            <div className="flex items-center gap-[10px]">
-              <p className="text-[15px] text-[#000]">Tertiary level:</p>
-              <p className="text-[15px] text-[#000]">
-                {data.education.collegeAttended}
-              </p>
-            </div>
+            <p>{data.education}</p>
           </div>
           <div className="mb-[20px]">
             <p className="text-[16px] font-semibold mb-[10px]">2.0 Fsc Roles</p>
@@ -223,8 +206,8 @@ const Review = () => {
             <p className="text-[16px] font-semibold mb-[10px]">
               7.0 Other training sub topics
             </p>
-            {data.otherTrainingSubTopics.length > 0 ? (
-              data.otherTrainingSubTopics.map((training, index) => (
+            {data?.otherTrainingSubTopics?.length > 0 ? (
+              data?.otherTrainingSubTopics?.map((training, index) => (
                 <div key={training?.title} className="my-[10px] w-full">
                   <div className="flex items-center gap-[10px]">
                     <p className="text-[15px] text-[#000] font-bold">Title:</p>

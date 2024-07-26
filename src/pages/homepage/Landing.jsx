@@ -64,6 +64,7 @@ const Landing = () => {
 
   const saveRespondent = () => {
     updateData({
+      ...data,
       respondentId:
         selectedRespondent.length > 0
           ? Number(selectedRespondent)

@@ -66,6 +66,7 @@ const TrainingNeeds = () => {
 
   const createTrainingNeeds = () => {
     updateData({
+      ...data,
       trainingNeeds: trainingNeeds,
     });
     navigate("/additional-skills");
