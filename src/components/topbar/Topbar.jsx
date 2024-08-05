@@ -4,13 +4,13 @@ import { useNavigate } from "react-router-dom";
 const Topbar = () => {
   const navigate = useNavigate();
   return (
-    <div className="h-[120px] bg-[#fff] shadow-md w-full">
-      <div className="w-[80%] h-full mx-auto">
-        <div className="h-full flex items-center lg:justify-between sm:flex-col sm:gap-[10px]">
+    <div className="h-[120px] bg-[#fff] sm:py-[10px] shadow-md w-full">
+      <div className="w-[80%] sm:w-[95%] h-full mx-auto">
+        <div className="h-full flex items-center sm:items-start lg:justify-between sm:flex-col sm:gap-[10px]">
           <img
             onClick={() => navigate("/")}
             className="h-[75%] cursor-pointer"
-            src="/lal_logo2-1.png"
+            src="/logo.jpeg"
             alt="logo"
           />
           <div className="flex items-center gap-[20px]">

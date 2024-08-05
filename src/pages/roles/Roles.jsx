@@ -121,14 +121,13 @@ const Roles = () => {
     <div className="w-[70%] sm:w-[95%] sm:h-full sm:mt-[20px] mx-auto flex flex-col mt-[40px] justify-center items-center">
       <div className="mb-[40px] mt-[50px] w-full">
         <div>FARM TO MARKET ALLIANCE</div>
-        <p className="">Farmers Service Centres (FSC) Survey</p>
-        <p className=" font-bold">Roles and responsibility analysis</p>
+        {/* <p className="">Farmers Service Centres (FSC) Survey</p> */}
+        <p className=" font-bold">Roles and responsibilities</p>
       </div>
       <div className="flex sm:flex-col justify-between w-full">
         <div className="flex flex-col w-[45%] sm:w-[95%]">
           <p className="text-[15px] mb-[40px]">
-            What are your current roles and responsibility at FSC? (Check where
-            appropriate)
+            What are the current roles of the FSCs (Check where appropriate)
           </p>
           <div className="flex items-center mb-[20px] gap-[10px]">
             <div className="flex items-center gap-[10px]">
@@ -171,7 +170,7 @@ const Roles = () => {
           <div className="flex flex-col mt-[10px] mb-[10px] gap-[10px]">
             <div className="flex items-center justify-between w-full">
               <p className="text-[15px] mb-[20px]">
-                What skills are required for your role (According to you)?
+                What are the skills required for FSCs
               </p>
             </div>
             <input
@@ -219,7 +218,7 @@ const Roles = () => {
             ))}
           </ul>
           <p className="text-[15px] mb-[20px]">
-            Do you have experience working with vendors in the following areas?
+            Do FSCs have experience working with vendors in the following areas
             (Check where appropriate)
           </p>
           <div className="flex items-center mb-[20px] gap-[10px]">
@@ -330,8 +329,7 @@ const Roles = () => {
           <div className="flex flex-col mt-[10px] mb-[15px] gap-[10px]">
             <div className="flex items-center justify-between w-full">
               <p className="text-[15px] mb-[10px]">
-                What challenges are you facing in accessing the market for the
-                inputs?
+                Challenges FSCs face in accessing market and inputs?
               </p>
             </div>
             <input

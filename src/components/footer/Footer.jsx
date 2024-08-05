@@ -5,8 +5,8 @@ const Footer = () => {
     <div className="h-[200px] bg-[#21293B] flex items-center">
       <div className="w-[80%] border-b border-white mx-auto flex flex-col justify-end items-center h-full">
         <img
-          className="h-[100px] w-[100px] mb-[10px]"
-          src="/lliffton-Logo.png"
+          className="h-[100px] w-[200px] mb-[10px]"
+          src="/logo.jpeg"
           alt="logo"
         />
         <p className="text-white w-full text-center text-[24px]">
