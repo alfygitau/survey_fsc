@@ -18,9 +18,7 @@ const Education = () => {
   return (
     <div className="w-[60%] sm:w-[95%] sm:h-full h-[650px] sm:mt-[20px] mx-auto flex flex-col justify-center items-center">
       <div className="flex flex-col w-[50%] sm:w-[95%] mx-auto">
-        <p className="text-left font-semibold">
-          Farmers Service Centres (FSC) Survey
-        </p>
+        <p className="text-left font-semibold">FSCs and coordinators Survey</p>
         <p className="text-[15px] font-semibold mb-[40px]">
           Education, occupation and recent training attended (Please specify)
         </p>

@@ -62,7 +62,7 @@ const OtherSkills = () => {
     <div className="w-[80%] sm:w-[95%] sm:h-full sm:mt-[20px] lg:mt-[50px] mx-auto flex flex-col h-full items-center">
       <div className="flex flex-col mb-[40px] w-[50%] sm:w-[95%]">
         <div>FARM TO MARKET ALLIANCE</div>
-        <p className="">Farmers Service Centres (FSC) Survey</p>
+        <p className="">FSCs and coordinators Survey</p>
         <p className="">Additional Information Training Needs</p>
       </div>
       <div className="flex flex-col w-[50%] sm:w-[95%]">

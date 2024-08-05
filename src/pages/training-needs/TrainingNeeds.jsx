@@ -74,7 +74,7 @@ const TrainingNeeds = () => {
   return (
     <div className="w-[80%] sm:w-[95%] sm:h-full sm:mt-[20px] lg:mt-[40px] mx-auto flex flex-col h-full items-center">
       <div className="mb-[40px] w-full">
-        <p className="">Farmers Service Centres (FSC) Survey</p>
+        <p className="">FSCs and coordinators Survey</p>
         <p className="">Training Needs</p>
         <p className="font-bold">
           3. Please indicate your training needs in the context of your roles

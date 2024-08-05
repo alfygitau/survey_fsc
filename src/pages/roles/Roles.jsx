@@ -121,7 +121,7 @@ const Roles = () => {
     <div className="w-[70%] sm:w-[95%] sm:h-full sm:mt-[20px] mx-auto flex flex-col mt-[40px] justify-center items-center">
       <div className="mb-[40px] mt-[50px] w-full">
         <div>FARM TO MARKET ALLIANCE</div>
-        {/* <p className="">Farmers Service Centres (FSC) Survey</p> */}
+        <p className="">FSCs and coordinators Survey</p>
         <p className=" font-bold">Roles and responsibilities</p>
       </div>
       <div className="flex sm:flex-col justify-between w-full">
@@ -329,7 +329,7 @@ const Roles = () => {
           <div className="flex flex-col mt-[10px] mb-[15px] gap-[10px]">
             <div className="flex items-center justify-between w-full">
               <p className="text-[15px] mb-[10px]">
-                Challenges FSCs face in accessing market and inputs?
+                Challenges FSCs face in accessing markets and inputs?
               </p>
             </div>
             <input

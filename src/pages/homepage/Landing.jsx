@@ -76,7 +76,7 @@ const Landing = () => {
     <div className="flex flex-col w-full gap-[20px] justify-center h-[650px]">
       <div className="w-[60%] sm:w-[95%] md:w-[75%] mx-auto">
         <div className="mb-[40px]">
-          <p className="text-left">Farmers Service Centres (FSC) Survey</p>
+          <p className="text-left font-bold">FSCs and coordinators Survey</p>
           <p>Training Needs Assessment (TNA) questionnaire</p>
         </div>
         <div className="w-[40%] sm:w-[100%]">

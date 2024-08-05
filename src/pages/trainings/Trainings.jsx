@@ -74,7 +74,7 @@ const Trainings = () => {
     <div className="w-[80%] sm:w-[95%] sm:h-full sm:my-[20px] mx-auto flex flex-col my-[40px]">
       <div className="mb-[40px] w-full">
         <div>FARM TO MARKET ALLIANCE</div>
-        <p className="">Farmers Service Centres (FSC) Survey</p>
+        <p className="">FSCs and coordinators Survey</p>
         <p className="font-bold">
           Details of training undergone(Last three trainings attended)
         </p>
